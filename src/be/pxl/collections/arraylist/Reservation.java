@@ -1,4 +1,4 @@
-package be.pxl.collections.theatre;
+package be.pxl.collections.arraylist;
 
 public class Reservation {
 

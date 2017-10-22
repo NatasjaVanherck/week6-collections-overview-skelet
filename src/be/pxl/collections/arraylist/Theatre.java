@@ -1,4 +1,4 @@
-package be.pxl.collections.theatre;
+package be.pxl.collections.arraylist;
 
 import java.util.ArrayList;
 import java.util.List;
