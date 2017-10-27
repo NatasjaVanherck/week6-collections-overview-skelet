@@ -2,6 +2,7 @@ package be.pxl.collections.hashmap;
 
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 public class DifficultCalculations {
 
@@ -15,16 +16,23 @@ public class DifficultCalculations {
         while (aantal < 5) {
             System.out.println("Geef een getal: ");
             int getal = scanner.nextInt();
-            long result = faculteit(getal);
+            long result;
             // kan je het berekende resultaat bijhouden in een cache?
             // wanneer je dan hetzelfde getal later nog eens tegenkomt,
             // hoef je het niet opnieuw te berekenen!
+            if(!(cache.containsKey(getal))){
+            	 result = faculteit(getal);
+            	 cache.put(getal, result);
+            	} else{
+            		result = cache.get(getal).longValue();
+            	}
+            
             System.out.println("Faculteit: " + result);
             aantal++;
         }
 
         // wat krijg je als je de waarden van de cache in een TreeMap steekt?
-    
+        TreeMap<Integer, Long> cacheTree = new TreeMap<>(cache);
         scanner.close();
     }
 
