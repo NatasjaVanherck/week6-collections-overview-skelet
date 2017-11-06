@@ -31,9 +31,14 @@ public class SolarSystemApp {
         System.out.println("Some planets: ");
         // toon de verschillende planeten in de console
         // hoe zorg je ervoor dat Mars slechts 1 keer toegevoegd voorkomt
-        
-        System.out.println("Some moons of Jupiter: ");
+        planets.forEach(planet -> System.out.println(planet));
+
         // toon de manen van jupiter
         // hoeveel keer komt Ganymede voor?
+        System.out.println("Some moons of Jupiter: ");
+        jupiter.getSatellites().forEach(moon -> System.out.println(moon));
+
+
+
     }
 }
