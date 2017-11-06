@@ -13,26 +13,26 @@ public class DifficultCalculations {
         // het resultaat bijhouden in een cache 
         Scanner scanner = new Scanner(System.in);
         int aantal = 0;
+        
+        // kan je het berekende resultaat bijhouden in een cache?
+        // wanneer je dan hetzelfde getal later nog eens tegenkomt,
+        //hoef je het niet opnieuw te berekenen
         while (aantal < 5) {
             System.out.println("Geef een getal: ");
             int getal = scanner.nextInt();
-            long result;
-            // kan je het berekende resultaat bijhouden in een cache?
-            // wanneer je dan hetzelfde getal later nog eens tegenkomt,
-            // hoef je het niet opnieuw te berekenen!
-            if(!(cache.containsKey(getal))){
-            	 result = faculteit(getal);
-            	 cache.put(getal, result);
-            	} else{
-            		result = cache.get(getal).longValue();
-            	}
-            
-            System.out.println("Faculteit: " + result);
+            if (cache.containsKey(getal)) {
+                System.out.println("Faculteit: " + cache.get(getal));
+            } else {
+                long result = faculteit(getal);
+                cache.put(getal, result);
+                System.out.println("Faculteit: " + cache.get(getal));
+            }
             aantal++;
         }
 
         // wat krijg je als je de waarden van de cache in een TreeMap steekt?
-        TreeMap<Integer, Long> cacheTree = new TreeMap<>(cache);
+        TreeMap<Integer, Long> sortedCache = new TreeMap<>(cache);
+        sortedCache.forEach((key, value) -> System.out.println("Faculteit van " + key + " is " + value));
         scanner.close();
     }
 
